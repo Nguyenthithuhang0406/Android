@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ChangeLanguages</string>
+    <string name="tv_loichao_vn">Việt Nam xin chào</string>
+    <string name="tv_loichao_nga">Nước Nga xin chào</string>
+    <string name="btn_vn">Việt Nam</string>
+    <string name="btn_nga">LB Nga</string>
+</resources>
