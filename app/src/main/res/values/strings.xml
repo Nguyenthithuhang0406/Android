@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ManagerUser</string>
+    <string name="app_header">Quản lý người dùng</string>
+</resources>
