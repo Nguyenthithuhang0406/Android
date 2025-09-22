@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CaculatorApp</string>
+    <string name="app_title">Cộng trừ nhân chia</string>
+    <string name="texta">Số a:</string>
+    <string name="textb">Số b:</string>
+</resources>
