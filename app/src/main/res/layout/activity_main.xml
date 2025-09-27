@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="18dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ho ten" />
+
+    <LinearLayout
+        android:weightSum="7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edt_birthday"
+            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="16/12/2003" />
+        <Button
+            android:id="@+id/btn_select_date"
+            android:layout_weight="1"
+            android:background="@drawable/clock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:weightSum="6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioGroup
+            android:layout_weight="4"
+            android:weightSum="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rd_male"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/rd_female"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_weight="2"
+            android:text="Close"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:weightSum="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_new"
+            android:text="New"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_update"
+            android:text="Update"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_remove"
+            android:text="Remove"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_students"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
