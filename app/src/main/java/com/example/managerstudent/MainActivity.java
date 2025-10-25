@@ -2,19 +2,28 @@ package com.example.managerstudent;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.AdapterView;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -32,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter arrayAdapter;
     private int pos;
 
+    private Toolbar myToolBar;
+    private ActivityResultLauncher launcher;
+    private LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +57,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mapping();
+
+        setSupportActionBar(myToolBar);
+        if (getSupportActionBar().getTitle() != null) {
+            getSupportActionBar().setTitle("Demo menu &Intent");
+        }
+        //Dang ky context menu cho ListView
+        registerForContextMenu(lvStudents);
+
+        // Dang ky nhan ket qua tra ve
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                Intent intent = result.getData();
+                int selectedColor = intent.getIntExtra("selectedColor", 0);
+                linearLayout.setBackgroundColor(selectedColor);
+            }
+        });
+
         arrStudents = new ArrayList<Student>();
         arrStudents.add(new Student("Le la", "15/02/2003", true));
         arrStudents.add(new Student("Le la2", "15/02/2003", false));
@@ -174,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     private void mapping() {
         edtName = findViewById(R.id.edt_name);
         edtBirthday = findViewById(R.id.edt_birthday);
@@ -185,5 +215,64 @@ public class MainActivity extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btn_update);
         btnRemove = findViewById(R.id.btn_remove);
         btnClose = findViewById(R.id.btn_close);
+        myToolBar = findViewById(R.id.my_toolbar);
+        linearLayout = findViewById(R.id.main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_toolbar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.mni_search) {
+            //  Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            intent.putExtra("msg", "Xin chao");
+            startActivity(intent);
+        } else {
+            if (id == R.id.mni_settings) {
+                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,SettingActivity.class);
+                intent.putExtra("msgRequest","Chon mau nen");
+                launcher.launch(intent);
+            } else {
+                if (id == R.id.mni_share) {
+                    Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.my_context_menu, menu);
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.mni_send) {
+            Toast.makeText(this, "Send", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+            Student studentObj = arrStudents.get(pos);
+            intent.putExtra("studentObj", studentObj);
+            startActivity(intent);
+        } else {
+            if (id == R.id.mni_zalo) {
+                Toast.makeText(this, "Zalo", Toast.LENGTH_SHORT).show();
+            } else {
+                if (id == R.id.mni_fb) {
+                    Toast.makeText(this, "Facebook", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }
+        return super.onContextItemSelected(item);
     }
 }

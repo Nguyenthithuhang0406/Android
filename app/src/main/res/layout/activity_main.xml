@@ -5,9 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="18dp"
+    android:layout_margin="20dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:background="@color/design_default_color_secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/edt_name"
@@ -29,7 +35,7 @@
         <Button
             android:id="@+id/btn_select_date"
             android:layout_weight="1"
-            android:background="@drawable/clock"
+            android:background="@drawable/img"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>

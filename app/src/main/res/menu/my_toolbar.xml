@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mni_search"
+        android:title="Search"
+        android:icon="@drawable/search_50dp"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/mni_settings"
+        android:title="Settings"
+        android:icon="@drawable/settings_50dp"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/mni_share"
+        android:title="Share"
+        android:icon="@drawable/share_50dp"
+        app:showAsAction="never"
+        />
+</menu>

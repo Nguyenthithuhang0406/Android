@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mni_send"
+        android:title="Send"
+        />
+    <item
+        android:title="Chon chuc nang">
+        <menu>
+            <item
+                android:id="@+id/mni_zalo"
+                android:title="Zalo"/>
+            <item
+                android:id="@+id/mni_fb"
+                android:title="Facebook"/>"
+            />
+        </menu>
+
+    </item>
+
+</menu>
