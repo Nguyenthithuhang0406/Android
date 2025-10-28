@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuAdd"
+        android:title="Thêm"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/menuSave"
+        android:title="Lưu trữ"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuView"
+        android:title="Xem kết quả"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menuExit"
+        android:title="Thoát"
+        app:showAsAction="never" />
+</menu>
